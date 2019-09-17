@@ -1,1 +1,22 @@
-<h2>index</h2>
+<div class="container">
+  <div class="head">
+    <p>總消費金額：{{{totalAmount}}}</p>
+  </div>
+  <ul class="list">
+    {{#each records}}
+    <li>
+      <div class="d-inline-block col-5">
+        <h4>{{this.name}}</h4>
+        <span>{{formatTime this.date}}</span>
+      </div>
+      <div class="d-inline-block col-1 my-auto mr-5">
+        <span style="font-size: 20px; line-height:60px;">{{this.amount}}</span>
+      </div>
+      <div class="mt-2 d-inline-block">
+        <a class="btn btn-outline-primary" href="/records/{{this._id}}/edit">編輯</a>
+        <a class="btn btn-outline-danger ml-3" href="#">刪除</a>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</div>

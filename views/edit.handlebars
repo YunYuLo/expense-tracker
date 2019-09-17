@@ -1,1 +1,39 @@
-<h2>edit</h2>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">修改明細</h5>
+    <hr>
+    <form action="/records/{{{records._id}}}?_method=PUT" method="POST">
+      <div class="form-group form-row">
+        <label for="name" class="col-md-3 col-form-label">名稱</label>
+        <div class="col-md-8">
+          <input type="text" name="name" class="form-control" id="name" placeholder="名稱" value="{{records.name}}"
+            required>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label for="date" class="col-md-3 col-form-label">日期</label>
+        <div class="col-md-8">
+          <input type="date" name="date" class="form-control" id="date" placeholder="date" value="{{formatDate}}"
+            required>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label for="category" class="col-md-3 col-form-label">分類</label>
+        <div class="col-md-8">
+          <input type="text" name="category" class="form-control" id="category" placeholder="分類"
+            value="{{records.category}}" required>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label for="amount" class="col-md-3 col-form-label">金額</label>
+        <div class="col-md-8">
+          <input type="number" name="amount" class="form-control" id="amount" placeholder="amount"
+            value="{{records.amount}}" required>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">Save</button>
+
+    </form>
+  </div>
+</div>
