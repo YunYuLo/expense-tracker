@@ -16,6 +16,9 @@ const userSchema = new Schema({
   facebookId: {
     type: String,
   },
+  googleId: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now
