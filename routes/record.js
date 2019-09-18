@@ -48,8 +48,13 @@ router.put('/:id', (req, res) => {
     })
 })
 
-router.post('/:id/delete', (req, res) => {
-  //delete
+router.delete('/:id/delete', (req, res) => {
+  Record.findById(req.params.id)
+    .exec((err, records) => {
+      records.remove((err) => {
+        return res.redirect('/')
+      })
+    })
 })
 
 module.exports = router
