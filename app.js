@@ -29,7 +29,7 @@ const Record = require('./models/record')
 //router
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/record'))
-// app.use('/users', require('./routes/user'))
+app.use('/users', require('./routes/user'))
 
 app.listen(3000, () => {
   console.log('App is running')
