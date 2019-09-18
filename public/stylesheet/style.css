@@ -1,4 +1,4 @@
-/*main handlebars*/
+/*********************main handlebars*********************/
 .sidenav {
   height: 100%;
   width: 160px;
@@ -6,7 +6,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(10, 10, 10);
+  background-color:  #117a8b;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -15,7 +15,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: black;
   display: block;
 }
 
@@ -33,7 +33,7 @@ main {
   .sidenav a {font-size: 18px;}
 }
 
-/*index handlebar*/
+/*********************index handlebar*********************/
 .container{
   max-width: 400px;
   /* margin: 50px auto; */
@@ -75,12 +75,106 @@ main {
   text-transform: capitalize;
 }
 
-.list li:nth-child(even) {
-  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+/*********************login handlebars*********************/
+.banner {
+  opacity: .5;
 }
 
-.list li:nth-child(odd) {
-  transform: perspective(100px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+.login-container {
+  max-width: 720px;
+  margin: -270px auto 0 auto;
+  background: white;
+  border-radius: 20px;
+}
+
+.register-container {
+  max-width: 720px;
+  margin: -350px auto 0 auto;
+  background: white;
+  border-radius: 20px;
+}
+
+.col-left .form-control:focus {
+  box-shadow: inherit;
+  background-color: inherit;
+  border-color: #B0B0B0;
+}
+
+.col-left div.separate-line small {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  background: white;
+  top: 0;
+}
+
+.col-left .login-partners-icons a i {
+  color: #17a2b8;
+}
+
+.col-left .login-partners-icons a:hover i {
+  color: #117a8b;
+}
+
+div.col-right {
+  border-radius: 0 20px 20px 0;
+  background: url('https://picsum.photos/id/180/2400/1600');
+  background-position: center;
+  background-size: cover;
+}
+
+.col-right .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  opacity: .2;
+}
+
+.col-right h3,
+.col-right h4 {
+  text-shadow: 1px 1px 2px rgb(105,105,105);
+}
+
+.animation-info-btn {
+  width: 200px;
+  border: 2px solid #17a2b8;
+  background: linear-gradient(to right, white 50%, #17a2b8 50%);
+  
+}
+
+.animation-info-btn:hover {
+  color: #17a2b8;
+}
+
+.animation-danger-btn {
+  width: 100%;
+  border: 2px solid #dc3545;
+  background: linear-gradient(to right, white 50%, #dc3545 50%);
+
+}
+
+.animation-danger-btn:hover {
+  color: #dc3545;
+}
+
+.animation-btn {
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  background-size: 200% 100%;
+  background-position: right top;
+  padding: 5px 0;
+  text-decoration: none;
+  margin: 0 auto;
+  transition: all .3s ease-out;
+}
+
+.animation-btn:hover {
+  background-position: left bottom;
+  font-weight: bold;
+  text-decoration: none;
 }
