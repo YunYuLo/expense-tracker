@@ -1,3 +1,4 @@
+/*main handlebars*/
 .sidenav {
   height: 100%;
   width: 160px;
@@ -32,6 +33,7 @@ main {
   .sidenav a {font-size: 18px;}
 }
 
+/*index handlebar*/
 .container{
   max-width: 400px;
   /* margin: 50px auto; */
@@ -42,20 +44,22 @@ main {
   margin-bottom: 10px;
   text-align: center;
   outline: 0;
-  /* border: 10px solid #F7F7F7; */
-  width: 100%;
+  border: 10px solid #F7F7F7;
+  width: 60%;
   position: relative;
   top: 10px;
   z-index: 2;
   border-radius: 5px;
   font-size: 30px;
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19); */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
 }
 
 .list{
-  margin: 0;
+  margin: 15px auto;
   padding: 0;
+  max-width: 50%;
   position: relative;
+  text-align: center;
 }
 
 .list li{
@@ -71,7 +75,7 @@ main {
   text-transform: capitalize;
 }
 
-/* .list li:nth-child(even) {
+.list li:nth-child(even) {
   transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
   background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
 }
@@ -79,4 +83,4 @@ main {
 .list li:nth-child(odd) {
   transform: perspective(100px) rotateX(-3deg) translateY(3px);
   background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
-} */
+}

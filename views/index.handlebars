@@ -1,15 +1,53 @@
+<div class="nav navbar-dark bg-light search-bar justify-content-center">
+  {{!-- <div class="search mt-3">
+    <form action="/">
+      <div class="input-group">
+        <h5>輸入搜尋日期：</h5>
+        <p>from</p>
+        <input type="date" name="date1" class="form-control">
+        <p>to</p>
+        <input type="date" name="date2" class="form-control">
+        <div class="input-group-append">
+          <button class="btn btn-major ml-1" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+
+      </div>
+    </form>
+  </div> --}}
+
+  <div class="dropdown mt-3 mb-3">
+    <button type="button" class="btn btn-outline-secondary dropdown-toggle ml-2 categoryDropdownBtn"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-item="{{filterCategory}}">
+      {{#if filterCategoryChineseName}}
+      {{{filterCategoryChineseName}}} 類別
+      {{else}}
+      不按類別
+      {{/if}}
+    </button>
+
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="/?filterCategory=">不按類別</a>
+      {{#each categoryList}}
+      <a class="dropdown-item categoryDropdownItem" href="/?filterCategory={{@key}}">{{this.chineseName}}</a>
+      {{/each}}
+    </div>
+  </div>
+
+</div>
+
+
 <div class="container">
   <div class="head">
-    <p>總消費金額：{{{totalAmount}}}</p>
+    <p>總消費金額：<span style="color: red;">{{{totalAmount}}}</span></p>
   </div>
   <ul class="list">
     {{#each records}}
     <li>
-      <div class="d-inline-block col-5">
+      <div class="d-inline-block">
         <h4>{{this.name}}</h4>
         <span>{{formatTime this.date}}</span>
       </div>
-      <div class="d-inline-block col-1 my-auto mr-5">
+      <div class="d-inline-block">
         <span style="font-size: 20px; line-height:60px;">{{this.amount}}</span>
       </div>
       <div class="mt-2 d-inline-block">

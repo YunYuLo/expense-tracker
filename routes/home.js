@@ -10,7 +10,18 @@ Handlebars.registerHelper('formatTime', (date) => {
 })
 
 router.get('/', (req, res) => {
-  Record.find({})
+  const filterCategory = req.query.filterCategory || ''
+  const filterCategoryChineseName = categoryList[filterCategory] === undefined ? '' : categoryList[filterCategory]['chineseName']
+
+  let sql = ''
+
+  if (filterCategory === '') {
+    sql = [{ "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 } }]
+  } else {
+    sql = [{ "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 } }, { "$match": { category: filterCategory } }]
+  }
+
+  Record.aggregate(sql)
     .exec((err, records) => {
       if (err) throw err
 
@@ -22,7 +33,9 @@ router.get('/', (req, res) => {
       return res.render('index', {
         records,
         categoryList,
-        totalAmount
+        totalAmount,
+        filterCategory,
+        filterCategoryChineseName
       })
     })
 })
