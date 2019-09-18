@@ -14,6 +14,24 @@
       </div>
     </form>
   </div> --}}
+  <!--filter dropdown button-->
+  <div class="dropdown mt-3 mb-3">
+    <button type="button" class="btn btn-outline-secondary dropdown-toggle monthDropdownBtn" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false" data-item="{{filterMonth}}">
+      {{#if filterMonth}}
+      {{{filterMonth}}} 月份
+      {{else}}
+      不按月份
+      {{/if}}
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">不按月份</a>
+      {{#each monthList}}
+      <a class="dropdown-item monthDropdownItem"
+        href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">{{this.name}}</a>
+      {{/each}}
+    </div>
+  </div>
 
   <div class="dropdown mt-3 mb-3">
     <button type="button" class="btn btn-outline-secondary dropdown-toggle ml-2 categoryDropdownBtn"
@@ -24,11 +42,11 @@
       不按類別
       {{/if}}
     </button>
-
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="/?filterCategory=">不按類別</a>
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=">不按類別</a>
       {{#each categoryList}}
-      <a class="dropdown-item categoryDropdownItem" href="/?filterCategory={{@key}}">{{this.chineseName}}</a>
+      <a class="dropdown-item categoryDropdownItem"
+        href="/?filterMonth={{filterMonth}}&filterCategory={{@key}}">{{this.chineseName}}</a>
       {{/each}}
     </div>
   </div>
