@@ -3,6 +3,7 @@ const router = express.Router()
 const Record = require('../models/record')
 const categoryList = require('../models/data/category.json').results
 const monthList = require('../models/data/months.json').results
+const { authenticated } = require('../config/auth')
 
 const Handlebars = require("handlebars")
 Handlebars.registerHelper('formatTime', (date) => {
@@ -10,7 +11,7 @@ Handlebars.registerHelper('formatTime', (date) => {
   return formatDate
 })
 
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   const filterMonth = req.query.filterMonth || ''
   const filterCategory = req.query.filterCategory || ''
   const filterCategoryChineseName = categoryList[filterCategory] === undefined ? '' : categoryList[filterCategory]['chineseName']

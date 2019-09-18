@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+const { authenticated } = require('../config/auth')
 
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new')
 })
 
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
   const record = new Record({
     name: req.body.name,
     date: req.body.date,
@@ -21,7 +22,7 @@ router.post('/', (req, res) => {
 
 })
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Record.findById(req.params.id)
     .exec((err, records) => {
       if (err) throw err
@@ -33,7 +34,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, (req, res) => {
   Record.findById(req.params.id)
     .exec((err, records) => {
       if (err) throw err
@@ -48,7 +49,7 @@ router.put('/:id', (req, res) => {
     })
 })
 
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   Record.findById(req.params.id)
     .exec((err, records) => {
       records.remove((err) => {
