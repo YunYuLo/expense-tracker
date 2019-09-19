@@ -1,12 +1,12 @@
 /*********************main handlebars*********************/
 .sidenav {
   height: 100%;
-  width: 170px;
+  width: 150px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color:  #117a8b;
+  background-color:  #59a9b6;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -34,10 +34,6 @@ main {
 }
 
 /*********************index handlebar*********************/
-.container{
-  max-width: 400px;
-  /* margin: 50px auto; */
-}
 
 .head{
   margin: 30px auto;
