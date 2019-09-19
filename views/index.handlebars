@@ -26,10 +26,18 @@
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">不按月份</a>
-      {{#each monthList}}
-      <a class="dropdown-item monthDropdownItem"
-        href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">{{this.name}}</a>
-      {{/each}}
+      <a class="dropdown-item" href="/?filterMonth=1&filterCategory={{filterCategory}}">1月份</a>
+      <a class="dropdown-item" href="/?filterMonth=2&filterCategory={{filterCategory}}">2月份</a>
+      <a class="dropdown-item" href="/?filterMonth=3&filterCategory={{filterCategory}}">3月份</a>
+      <a class="dropdown-item" href="/?filterMonth=4&filterCategory={{filterCategory}}">4月份</a>
+      <a class="dropdown-item" href="/?filterMonth=5&filterCategory={{filterCategory}}">5月份</a>
+      <a class="dropdown-item" href="/?filterMonth=6&filterCategory={{filterCategory}}">6月份</a>
+      <a class="dropdown-item" href="/?filterMonth=7&filterCategory={{filterCategory}}">7月份</a>
+      <a class="dropdown-item" href="/?filterMonth=8&filterCategory={{filterCategory}}">8月份</a>
+      <a class="dropdown-item" href="/?filterMonth=9&filterCategory={{filterCategory}}">9月份</a>
+      <a class="dropdown-item" href="/?filterMonth=10&filterCategory={{filterCategory}}">10月份</a>
+      <a class="dropdown-item" href="/?filterMonth=11&filterCategory={{filterCategory}}">11月份</a>
+      <a class="dropdown-item" href="/?filterMonth=12&filterCategory={{filterCategory}}">12月份</a>
     </div>
   </div>
 
@@ -44,10 +52,11 @@
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=">不按類別</a>
-      {{#each categoryList}}
-      <a class="dropdown-item categoryDropdownItem"
-        href="/?filterMonth={{filterMonth}}&filterCategory={{@key}}">{{this.chineseName}}</a>
-      {{/each}}
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=home">家居物業</a>
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=traffic">交通出行</a>
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=entertainment">休閒娛樂</a>
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=food">餐飲食品</a>
+      <a class="dropdown-item" href="/?filterMonth={{filterMonth}}&filterCategory=other">其他</a>
     </div>
   </div>
 

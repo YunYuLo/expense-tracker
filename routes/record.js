@@ -33,7 +33,8 @@ router.post('/', authenticated, (req, res) => {
       name,
       date,
       category,
-      amount
+      amount,
+      userId: req.user._id
     })
 
     record.save((err) => {
@@ -44,57 +45,53 @@ router.post('/', authenticated, (req, res) => {
 })
 
 router.get('/:id/edit', authenticated, (req, res) => {
-  Record.findById(req.params.id)
-    .exec((err, records) => {
-      if (err) throw err
-      const formatDate = records.date.toISOString().split("T")[0]
-      return res.render('edit', {
-        records,
-        formatDate
-      })
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, records) => {
+    if (err) throw err
+    const formatDate = records.date.toISOString().split("T")[0]
+    return res.render('edit', {
+      records,
+      formatDate
     })
+  })
 })
 
 router.put('/:id', authenticated, (req, res) => {
-  Record.findById(req.params.id)
-    .exec((err, records) => {
-      if (err) throw err
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, records) => {
+    if (err) throw err
 
-      let errors = []
-      const { name, date, category, amount } = req.body
-      if (!name || !date || !category || !amount) {
-        errors.push({ message: '所有欄位皆為必填欄位！' })
-      }
+    let errors = []
+    const { name, date, category, amount } = req.body
+    if (!name || !date || !category || !amount) {
+      errors.push({ message: '所有欄位皆為必填欄位！' })
+    }
 
-      if (errors.length > 0) {
-        const formatDate = records.date.toISOString().split("T")[0]
-        return res.render('edit', {
-          errors,
-          records,
-          formatDate
-        })
-      } else {
-        records.name = req.body.name
-        records.date = req.body.date
-        records.category = req.body.category
-        records.amount = req.body.amount
+    if (errors.length > 0) {
+      const formatDate = records.date.toISOString().split("T")[0]
+      return res.render('edit', {
+        errors,
+        records,
+        formatDate
+      })
+    } else {
+      records.name = req.body.name
+      records.date = req.body.date
+      records.category = req.body.category
+      records.amount = req.body.amount
 
-        records.save((err) => {
-          return res.redirect('/')
-        })
-      }
-
-
-    })
+      records.save((err) => {
+        return res.redirect('/')
+      })
+    }
+  })
 })
 
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Record.findById(req.params.id)
-    .exec((err, records) => {
-      records.remove((err) => {
-        return res.redirect('/')
-      })
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, records) => {
+    records.remove((err) => {
+      if (err) throw err
+      return res.redirect('/')
     })
+  })
 })
 
 module.exports = router
