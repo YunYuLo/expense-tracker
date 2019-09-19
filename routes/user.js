@@ -25,7 +25,7 @@ router.post('/register', (req, res) => {
 
   let errors = []
   if (!email || !password || !rePassword) {
-    errors.push({ message: 'Email, Password, 米瑪確認為必填欄位！' })
+    errors.push({ message: 'Email, Password, Password為必填欄位！' })
   }
   if (password !== rePassword) {
     errors.push({ message: '密碼輸入錯誤' })
