@@ -59,8 +59,14 @@
     <p>總消費金額：<span style="color: red;">{{{totalAmount}}}</span></p>
   </div>
   <ul class="list">
+    {{#if records}}
     {{#each records}}
     <li>
+      <div class="d-inline-block col-1 icon" style="font-size:30px">
+        {{#value_of categoryList}}
+        <i class="fas fa-{{categoryImgFontAwesomeName}} mt-3 ml-3 category-img"></i>
+        {{/value_of}}
+      </div>
       <div class="d-inline-block">
         <h4>{{this.name}}</h4>
         <span>{{formatTime this.date}}</span>
@@ -100,8 +106,9 @@
         </div>
       </div>
     </div>
-
-
     {{/each}}
+    {{else}}
+    <img src="../img/no-record-found.png" alt="no-record-found" class="mt-3">
+    {{/if}}
   </ul>
 </div>

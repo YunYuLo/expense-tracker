@@ -3,6 +3,11 @@ const router = express.Router()
 const Record = require('../models/record')
 const { authenticated } = require('../config/auth')
 
+const Handlebars = require('handlebars')
+Handlebars.registerHelper('value_of', function (context, options) {
+  return options.fn({ categoryImgFontAwesomeName: options['data']['_parent']['root']['categoryList'][this.category]['image'] })
+})
+
 router.get('/new', authenticated, (req, res) => {
   res.render('new')
 })
