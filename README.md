@@ -1,7 +1,7 @@
 # Expense Tracker
  > 用Express, Mongodb 打造的記帳軟體
 
- >一鍵開始試用
+ >[一鍵開始試用](https://vivi-expense-tracker.herokuapp.com)
 
 ## Features
 - 使用者可以瀏覽消費明細
@@ -11,12 +11,9 @@
 
 ## Quick view
 
-![login page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/login.png)
-![register page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/register.png)
-![main page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/main.png)
-![show page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/show.png)
-![new page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/new.png)
-![editProfile page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/editProfile.png)
+![login page](https://raw.githubusercontent.com/YunYuLo/expense-tracker/master/public/img/login.png)
+![register page](https://raw.githubusercontent.com/YunYuLo/expense-tracker/master/public/img/register.png)
+![main page](https://raw.githubusercontent.com/YunYuLo/expense-tracker/master/public/img/main.png)
 
 
 
@@ -42,7 +39,7 @@
 1. Clone 此專案至電腦
 
 ```
-git clone https://github.com/YunYuLo/restaurant_list.git
+git clone https://github.com/YunYuLo/expense-tracker.git
 ```
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
@@ -65,7 +62,7 @@ $ [~/restaurant_List]npm install <套件名稱>
 $ [~/restaurant_List/models/seeds] node RestaurantSeeder.js 
 ```
 
-6.導入.env
+6.導入.env至根目錄
 ```
 FACEBOOK_ID=xxxxxxxx
 FACEBOOK_SECRET=xxxxxxxx
