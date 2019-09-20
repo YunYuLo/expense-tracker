@@ -6,7 +6,7 @@ const recordsList = require('../data/record.json').results
 const userJson = require('../data/user.json').results
 
 
-mongoose.connect('mongodb://127.0.0.1/record', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/record', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('mongoose error')
