@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 
 //mongodb
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/record', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/record', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -55,6 +55,6 @@ app.use('/records', require('./routes/record'))
 app.use('/users', require('./routes/user'))
 app.use('/auth', require('./routes/auths'))
 
-app.listen(3000, () => {
+app.listen(process.env.MONGODB_URI || 3000, () => {
   console.log('App is running')
 })
