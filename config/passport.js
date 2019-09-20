@@ -70,45 +70,45 @@ module.exports = passport => {
   }))
 
   //google strategy
-  passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK,
-    profileFields: ['email', 'displayName']
-  }, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ email: profile._json.email })
-      .then(user => {
-        if (!user) {
-          const randomPassword = Math.random().toString(36).slice(-8)
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(randomPassword, salt, (err, hash) => {
-              const newUser = new User({
-                name: profile._json.name,
-                email: profile._json.email,
-                password: hash,
-                googleId: profile.id
-              })
-              newUser.save()
-                .then(user => {
-                  return done(null, user)
-                }).catch(err => {
-                  console.log(err)
-                })
-            })
-          })
-        } else {
-          //this email already exist in User
-          user['googleId'] = profile.id
-          user.save()
-            .then(user => {
-              return done(null, user)
-            }).catch(err => {
-              console.log(err)
-            })
-        }
-      })
-  })
-  )
+  // passport.use(new GoogleStrategy({
+  //   clientID: process.env.GOOGLE_CLIENT_ID,
+  //   clientSecret: process.env.GOOGLE_SECRET,
+  //   callbackURL: process.env.GOOGLE_CALLBACK,
+  //   profileFields: ['email', 'displayName']
+  // }, (accessToken, refreshToken, profile, done) => {
+  //   User.findOne({ email: profile._json.email })
+  //     .then(user => {
+  //       if (!user) {
+  //         const randomPassword = Math.random().toString(36).slice(-8)
+  //         bcrypt.genSalt(10, (err, salt) => {
+  //           bcrypt.hash(randomPassword, salt, (err, hash) => {
+  //             const newUser = new User({
+  //               name: profile._json.name,
+  //               email: profile._json.email,
+  //               password: hash,
+  //               googleId: profile.id
+  //             })
+  //             newUser.save()
+  //               .then(user => {
+  //                 return done(null, user)
+  //               }).catch(err => {
+  //                 console.log(err)
+  //               })
+  //           })
+  //         })
+  //       } else {
+  //         //this email already exist in User
+  //         user['googleId'] = profile.id
+  //         user.save()
+  //           .then(user => {
+  //             return done(null, user)
+  //           }).catch(err => {
+  //             console.log(err)
+  //           })
+  //       }
+  //     })
+  // })
+  // )
 
 
   passport.serializeUser((user, done) => {
