@@ -26,8 +26,17 @@
             <div class="form-group form-row">
               <label for="category" class="col-md-3 col-form-label">分類＊</label>
               <div class="col-md-8">
-                <input type="text" name="category" class="form-control" id="category" placeholder="分類"
-                  value="{{records.category}}" required>
+                <select class="d-inline-block col-4 custom-select" name="category" id="category" required>
+                  <option value="" disabled selected>請選擇類別</option>
+                  <option value="home" {{#ifEquals record.category "home"}} selected{{/ifEquals}}>家居物業</option>
+                  <option value="traffic" {{#ifEquals record.category "traffic"}} selected{{/ifEquals}}>交通出行</option>
+                  <option value="entertainment" {{#ifEquals record.category "entertainment"}} selected{{/ifEquals}}>休閒娛樂
+                  </option>
+                  <option value="food" {{#ifEquals record.category "food"}} selected{{/ifEquals}}>餐飲食品</option>
+                  <option value="other" {{#ifEquals record.category "other"}} selected{{/ifEquals}}>其他</option>
+                </select>
+                {{!-- <input type="text" name="category" class="form-control" id="category" placeholder="分類"
+                  value="{{records.category}}" required>--}}
               </div>
             </div>
             <div class="form-group form-row">
