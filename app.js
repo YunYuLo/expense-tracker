@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+require('./handlebars-helper')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')

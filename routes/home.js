@@ -5,11 +5,13 @@ const categoryList = require('../models/data/category.json').results
 const monthList = require('../models/data/months.json').results
 const { authenticated } = require('../config/auth')
 
-const Handlebars = require("handlebars")
-Handlebars.registerHelper('formatTime', (date) => {
-  let formatDate = date.toISOString().split("T")[0]
-  return formatDate
-})
+const icons = {
+  "home": "home",
+  "traffic": "shuttle-van",
+  "entertainment": "grin-beam",
+  "food": "utensils",
+  "other": "pen"
+}
 
 router.get('/', authenticated, (req, res) => {
   const filterMonth = req.query.filterMonth || ''
@@ -50,6 +52,10 @@ router.get('/', authenticated, (req, res) => {
   Record.aggregate(sql)
     .exec((err, records) => {
       if (err) throw err
+
+      records.forEach(record => {
+        record.icon = icons[record.category]
+      })
 
       let totalAmount = 0
       if (records.length > 0) {

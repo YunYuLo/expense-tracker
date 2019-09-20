@@ -72,9 +72,9 @@
     {{#each records}}
     <li>
       <div class="d-inline-block col-1 icon" style="font-size:30px">
-        {{#value_of categoryList}}
-        <i class="fas fa-{{categoryImgFontAwesomeName}} mt-3 ml-3 category-img"></i>
-        {{/value_of}}
+
+        <i class="fas fa-{{this.icon}} mt-3 ml-3 category-img"></i>
+
       </div>
       <div class="d-inline-block">
         <h4>{{this.name}}</h4>
