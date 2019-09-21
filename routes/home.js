@@ -22,28 +22,28 @@ router.get('/', authenticated, (req, res) => {
 
   if (filterMonth === '' && filterCategory === '') {
     sql = [{
-      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 }
+      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
     }, {
       "$match": { userId: req.user._id }
     }]
 
   } else if (filterMonth === '') {
     sql = [{
-      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 }
+      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
     }, {
       "$match": { userId: req.user._id, category: filterCategory }
     }]
 
   } else if (filterCategory === '') {
     sql = [{
-      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 }
+      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
     }, {
       "$match": { "m": Number(filterMonth), userId: req.user._id }
     }]
 
   } else {
     sql = [{
-      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "userId": 1 }
+      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
     }, {
       "$match": { "m": Number(filterMonth), userId: req.user._id, category: filterCategory }
     }]

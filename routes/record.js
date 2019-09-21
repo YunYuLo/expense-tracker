@@ -9,11 +9,11 @@ router.get('/new', authenticated, (req, res) => {
 })
 
 router.post('/', authenticated, (req, res) => {
-  const { name, date, category, amount } = req.body
+  const { name, date, merchant, category, amount } = req.body
 
   let errors = []
   if (!name || !date || !category || !amount) {
-    errors.push({ message: '所有欄位皆為必填欄位！' })
+    errors.push({ message: '＊欄位為必填欄位！' })
   }
 
   if (errors.length > 0) {
@@ -21,6 +21,7 @@ router.post('/', authenticated, (req, res) => {
       errors,
       name,
       date,
+      merchant,
       category,
       amount
     })
@@ -28,6 +29,7 @@ router.post('/', authenticated, (req, res) => {
     const record = new Record({
       name,
       date,
+      merchant,
       category,
       amount,
       userId: req.user._id
@@ -56,9 +58,9 @@ router.put('/:id', authenticated, (req, res) => {
     if (err) throw err
 
     let errors = []
-    const { name, date, category, amount } = req.body
+    const { name, date, merchant, category, amount } = req.body
     if (!name || !date || !category || !amount) {
-      errors.push({ message: '所有欄位皆為必填欄位！' })
+      errors.push({ message: '＊欄位皆為必填欄位！' })
     }
 
     if (errors.length > 0) {
@@ -71,6 +73,7 @@ router.put('/:id', authenticated, (req, res) => {
     } else {
       records.name = req.body.name
       records.date = req.body.date
+      records.merchant = req.body.merchant
       records.category = req.body.category
       records.amount = req.body.amount
 

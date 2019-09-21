@@ -77,8 +77,15 @@
 
       </div>
       <div class="d-inline-block">
-        <h4>{{this.name}}</h4>
+        <h4>{{this.name}}
+          {{#if this.merchant}}
+          <span style="font-size:60%; color=grey;">({{this.merchant}})</span>
+          {{/if}}
+        </h4>
         <span>{{formatTime this.date}}</span>
+      </div>
+      <div class="d-inline-block">
+        <span style="font-size: 10px; line-height:60px;"></span>
       </div>
       <div class="d-inline-block">
         <span style="font-size: 20px; line-height:60px;">{{this.amount}}</span>

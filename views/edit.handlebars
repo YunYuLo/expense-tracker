@@ -19,8 +19,15 @@
             <div class="form-group form-row">
               <label for="date" class="col-md-3 col-form-label">日期＊</label>
               <div class="col-md-8">
-                <input type="date" name="date" class="form-control" id="date" placeholder="YYYY/MM/DD"
-                  value="{{formatDate}}" required>
+                <input type="date" name="date" class="form-control" id="date" data-provide="datepicker"
+                  placeholder="YYYY/MM/DD" value="{{formatDate}}" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="merchant" class="col-md-3 col-form-label">商家</label>
+              <div class="col-md-8">
+                <input type="text" name="merchant" class="form-control" id="merchant" placeholder="商家名稱"
+                  value="{{records.merchant}}">
               </div>
             </div>
             <div class="form-group form-row">
@@ -28,15 +35,14 @@
               <div class="col-md-8">
                 <select class="d-inline-block col-4 custom-select" name="category" id="category" required>
                   <option value="" disabled selected>請選擇類別</option>
-                  <option value="home" {{#ifEquals record.category "home"}} selected{{/ifEquals}}>家居物業</option>
-                  <option value="traffic" {{#ifEquals record.category "traffic"}} selected{{/ifEquals}}>交通出行</option>
-                  <option value="entertainment" {{#ifEquals record.category "entertainment"}} selected{{/ifEquals}}>休閒娛樂
+                  <option value="home" {{#ifEquals records.category "home"}} selected{{/ifEquals}}>家居物業</option>
+                  <option value="traffic" {{#ifEquals records.category "traffic"}} selected{{/ifEquals}}>交通出行</option>
+                  <option value="entertainment" {{#ifEquals records.category "entertainment"}} selected{{/ifEquals}}>
+                    休閒娛樂
                   </option>
-                  <option value="food" {{#ifEquals record.category "food"}} selected{{/ifEquals}}>餐飲食品</option>
-                  <option value="other" {{#ifEquals record.category "other"}} selected{{/ifEquals}}>其他</option>
+                  <option value="food" {{#ifEquals records.category "food"}} selected{{/ifEquals}}>餐飲食品</option>
+                  <option value="other" {{#ifEquals records.category "other"}} selected{{/ifEquals}}>其他</option>
                 </select>
-                {{!-- <input type="text" name="category" class="form-control" id="category" placeholder="分類"
-                  value="{{records.category}}" required>--}}
               </div>
             </div>
             <div class="form-group form-row">
