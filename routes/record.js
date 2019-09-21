@@ -15,6 +15,9 @@ router.post('/', authenticated, (req, res) => {
   if (!name || !date || !category || !amount) {
     errors.push({ message: '＊欄位為必填欄位！' })
   }
+  if (isNaN(amount)) {
+    errors.push({ message: `金額必須是數字` })
+  }
 
   if (errors.length > 0) {
     res.render('new', {
@@ -61,6 +64,9 @@ router.put('/:id', authenticated, (req, res) => {
     const { name, date, merchant, category, amount } = req.body
     if (!name || !date || !category || !amount) {
       errors.push({ message: '＊欄位皆為必填欄位！' })
+    }
+    if (isNaN(amount)) {
+      errors.push({ message: `金額必須是數字` })
     }
 
     if (errors.length > 0) {
