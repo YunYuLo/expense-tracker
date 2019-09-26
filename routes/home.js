@@ -18,35 +18,21 @@ router.get('/', authenticated, (req, res) => {
   const filterCategory = req.query.filterCategory || ''
   const filterCategoryChineseName = categoryList[filterCategory] === undefined ? '' : categoryList[filterCategory]['chineseName']
 
-  let sql = ''
+
+  let sql = [{
+    "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
+  }, {
+    "$match": {}
+  }]
 
   if (filterMonth === '' && filterCategory === '') {
-    sql = [{
-      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
-    }, {
-      "$match": { userId: req.user._id }
-    }]
-
-  } else if (filterMonth === '') {
-    sql = [{
-      "$project": { "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
-    }, {
-      "$match": { userId: req.user._id, category: filterCategory }
-    }]
-
+    sql[1].$match = { userId: req.user._id }
   } else if (filterCategory === '') {
-    sql = [{
-      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
-    }, {
-      "$match": { "m": Number(filterMonth), userId: req.user._id }
-    }]
-
+    sql[1].$match = { "m": Number(filterMonth), userId: req.user._id }
+  } else if (filterMonth === '') {
+    sql[1].$match = { userId: req.user._id, category: filterCategory }
   } else {
-    sql = [{
-      "$project": { "m": { "$month": "$date" }, "name": 1, "category": 1, "amount": 1, "date": 1, "merchant": 1, "userId": 1 }
-    }, {
-      "$match": { "m": Number(filterMonth), userId: req.user._id, category: filterCategory }
-    }]
+    sql[1].$match = { "m": Number(filterMonth), userId: req.user._id, category: filterCategory }
   }
 
   Record.aggregate(sql)
