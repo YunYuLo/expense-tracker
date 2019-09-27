@@ -62,10 +62,14 @@
 
 </div>
 
+<div class="analyse-chart col-6 mx-auto">
+  <canvas id="analyse-chart"></canvas>
+</div>
+
 
 <div class="container">
   <div class="head">
-    <p>總消費金額：<span style="color: red;">{{{totalAmount}}}</span></p>
+    <p>總消費金額：<span style="color: red;">{{{float2dollar totalAmount}}}</span></p>
   </div>
   <ul class="list">
     {{#if records}}
@@ -128,3 +132,34 @@
     {{/if}}
   </ul>
 </div>
+
+{{!-- chart here --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+  var ctx = document.getElementById('analyse-chart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['家居物業', '交通出行', '休閒娛樂', '餐飲食品', '其他'],
+      datasets: [{
+        label: '# of Votes',
+        data: [{{ subtotalList }}],
+      backgroundColor: [
+        'hsl(347, 100%, 65%)',
+        'hsl(204, 82%, 65%)',
+        'hsl(42, 100%, 65%)',
+        'hsl(125, 40%, 65%)',
+        'hsl(294, 57%, 65%)',
+      ],
+      hoverBackgroundColor: [
+        'hsl(347, 100%, 45%)',
+        'hsl(204, 82%, 45%)',
+        'hsl(42, 100%, 45%)',
+        'hsl(125, 40%, 45%)',
+        'hsl(294, 57%, 45%)',
+      ],
+      borderWidth: 1
+    }]
+  },
+  });
+</script>

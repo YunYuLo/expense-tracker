@@ -8,3 +8,7 @@ Handlebars.registerHelper('formatTime', (date) => {
   let formatDate = date.toISOString().split("T")[0]
   return formatDate
 })
+
+Handlebars.registerHelper('float2dollar', (value) => {
+  return "NTD " + (value).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+})
