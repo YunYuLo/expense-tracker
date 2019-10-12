@@ -45,13 +45,13 @@ git clone https://github.com/YunYuLo/expense-tracker.git
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
 
 ```
-$ [~] cd restaurant_List
+$ [~] cd expense-tracker
 ```
 
 3. 安裝 npm 套件
 
 ```
-$ [~/restaurant_List]npm install <套件名稱>
+$ [~/expense-tracker]npm install <套件名稱>
 ```
 
 4. 開啟本地 MongoDB 資料庫
@@ -59,7 +59,7 @@ $ [~/restaurant_List]npm install <套件名稱>
 5. 匯入預設餐廳資料(RestaurantSeeder.js)，完成後按下 ctrl + c 結束執行
 
 ```
-$ [~/restaurant_List/models/seeds] node RestaurantSeeder.js 
+$ [~/expense-tracker/models/seeds] node seeder.js 
 ```
 
 6.導入.env至根目錄
@@ -72,7 +72,7 @@ FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
 7. 啟動伺服器，執行 app.js 檔案
 
 ```
-$ [~/restaurant_List]nodemon app.js
+$ [~/expense-tracker]nodemon app.js
 ```
 
 8. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
